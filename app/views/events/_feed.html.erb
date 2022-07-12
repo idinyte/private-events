@@ -1,0 +1,7 @@
+<% @events.each do | event | %>
+  <article class="container">
+    <strong><%=event.title%></strong><br />
+    <p><%= event.description %></p>
+    <time datetime="<%= event.date %>"><%= event.date.strftime('%b %d %Y') %></time>
+  </article>
+<%end%>
