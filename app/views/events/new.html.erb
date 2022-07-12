@@ -1,0 +1,10 @@
+<h2>Create new event</h2>
+<%= form_with model: @events, data: {turbo: false} do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <%= form.label :description, "Event description" %>
+    <%= form.text_area :description, size: "30x10"%>
+    <%= form.label :date, "Event starts" %>
+    <%= form.datetime_local_field :date, value: Time.now.strftime("%Y-%m-%dT%H:%M").to_s %>
+    <%= form.submit "Create" %>
+  <% end %>
