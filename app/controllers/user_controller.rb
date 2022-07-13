@@ -1,9 +1,5 @@
 class UserController < ApplicationController
-  before_action :authenticate_user!, only: %i[index show]
-
-  def index
-    @my_events = Event.joins(:going_to_event).where(going_to_events: {user_id: current_user.id}).or(Event.joins(:going_to_event).where(user_id: current_user.id))
-  end
+  before_action :authenticate_user!, only: %i[show]
 
   def show
     @user_hosting = set_user.events.all.where('date > ?', DateTime.now)

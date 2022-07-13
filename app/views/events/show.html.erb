@@ -1,6 +1,6 @@
 <div class="container">
-  <article class="grid-item show">
-    <div>
+  <article class="grid-item show full">
+    <div class="full">
       <strong><%=@events.title%></strong><br/>
       <span><%= link_to "@#{@events.event_creator.username}", user_path(@events.event_creator.id), class: "profile-link"%></span><br/>
       <span class="going top-1">
@@ -31,8 +31,8 @@
           </div>
         </div>
       </span><br/>
-      <p><%= @events.description %></p>
+      <p class="description full"><%= @events.description %></p>
     </div>
-    <time class="top-3" datetime="<%= @events.date %>"><%= @events.date.strftime('%b %d %Y,   %H:%M') %></time>
+    <time class="top-2" datetime="<%= @events.date %>"><%= @events.date.strftime('%b %d %Y,   %H:%M') %></time>
   </article>
 </div>

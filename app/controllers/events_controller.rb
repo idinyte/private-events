@@ -23,7 +23,7 @@ class EventsController < ApplicationController
       if @events.save
         format.html { redirect_to root_path, location: @event }
       else
-        flash.now[:alert] = @event.errors.full_messages.first
+        flash.now[:alert] = @events.errors.full_messages.first
         format.html { render :new, status: :unprocessable_entity }
       end
     end

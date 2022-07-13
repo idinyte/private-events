@@ -8,7 +8,7 @@
       <%= form.label :description, "Event description" %>
       <%= form.text_area :description, size: "40x10", class: "fluid"%>
       <%= form.label :date, "Event starts" %>
-      <%= form.datetime_local_field :date, value: Time.now.strftime("%Y-%m-%dT%H:%M").to_s %>
+      <%= form.datetime_local_field :date, value: (Time.now + 1.day).strftime("%Y-%m-%dT%H:%M").to_s %>
       <%= form.submit "Create", class: "button is-inverted top-3" %>
     <% end %>
 </section>

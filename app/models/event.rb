@@ -5,4 +5,5 @@ class Event < ApplicationRecord
 
   validates :description, presence: true, length: 30..2000
   validates :title, presence: true, length: {maximum: 30}
+  validates :date, presence: true, comparison: { greater_than: Time.now, message: "must be in the future" }
 end

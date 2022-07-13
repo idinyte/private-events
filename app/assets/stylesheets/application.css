@@ -142,7 +142,7 @@ p.control{
   overflow: scroll;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 25rem));
-  grid-template-rows: repeat(3, minmax(10rem, 13rem));
+  grid-auto-rows: minmax(10rem, 13rem);
   justify-content: center;
 
 }
@@ -152,15 +152,25 @@ p.control{
   flex-direction: column;
   width: 100%;
   max-width: 50rem;
+  max-height: 13rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
   height: auto;
   border: 2px solid black;
   justify-content: space-between;
   padding: var(--padding_2);
 }
-
+.grid-item>div:not(.full), article>p{
+  max-height: 80%;
+  overflow: hidden;
+}
 .show{
   border: none;
   width: auto;
+}
+
+.full{
+  max-height: 100%;
 }
 
 .going{
@@ -201,6 +211,10 @@ p{
   width: 100%;
   height: auto;
   word-wrap: break-word;
+}
+
+h2{
+  margin: var(--padding_3);
 }
 
 textarea{
