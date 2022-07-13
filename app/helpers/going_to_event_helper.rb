@@ -1,0 +1,2 @@
+module GoingToEventHelper
+end

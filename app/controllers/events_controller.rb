@@ -7,6 +7,11 @@ class EventsController < ApplicationController
     @events = Event.new
   end
 
+  # GET /tweeets/1 or /tweeets/1.json
+  def show
+    @event = Event.find(params[:id])
+  end
+
   # POST /posts or /posts.json
   def create
     @event = current_user.events.build(event_params)
@@ -22,11 +27,6 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @event = Event.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:title, :description, :date, :location)

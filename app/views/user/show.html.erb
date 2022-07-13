@@ -2,7 +2,7 @@
   <h2><%= @username %> events</h2>
   <% @user_events.each do |event| %>
     <article class="container">
-      <strong><%=event.title%></strong><br />
+      <strong><%= link_to event.title, event_path(event.id)%></strong><br/>
       <p><%= event.description %></p>
       <time datetime="<%= event.date %>"><%= event.date.strftime('%b %d %Y') %></time>
     </article>

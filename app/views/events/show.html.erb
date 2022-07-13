@@ -1,0 +1,11 @@
+<strong><%=@event.title%></strong><br/>
+<span><%= link_to "@#{@event.event_creator.username}", user_path(@event.event_creator.id)%></span><br/>
+<% if @event.attendees.ids.include?(current_user.id)%>
+<span><%= button_to 'Cancel', going_to_event_path, :method => :delete %></span><br/>
+<% else%>
+<span><%= button_to 'Attend', attend_path %></span><br/>
+<%end%>
+<%=  @event.attendees %>
+<p><%= @event.description %></p>
+<time datetime="<%= @event.date %>"><%= @event.date.strftime('%b %d %Y') %></time>
+

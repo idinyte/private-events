@@ -1,5 +1,5 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+class UserController < ApplicationController
+  before_action :authenticate_user!, only: %i[index show]
 
   def index
     @my_events = current_user.events.all
@@ -7,11 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user_events = set_user.events.all
-    if current_user == set_user
-      @username = 'My'
-    else
-      @username = set_user.username
-    end
+    @username = set_user.username
   end
 
   private

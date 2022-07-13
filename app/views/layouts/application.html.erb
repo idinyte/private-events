@@ -22,7 +22,7 @@
             <%= link_to "New event", new_event_path%>
           </p>
           <p class="control">
-            <%= link_to current_user.username, users_path, class: "button is-inverted" %>
+            <%= link_to current_user.username, user_index_path, class: "button is-inverted" %>
           </p>
           <p>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: "delete" }, class:"button is-info" %>
