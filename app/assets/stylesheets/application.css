@@ -13,3 +13,360 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&family=Roboto:wght@400;500;700&display=swap');
+ 
+ *{
+   margin: 0;
+   padding: 0;
+   font-family: 'Nunito', sans-serif;
+   box-sizing: border-box;
+ }
+
+ html,body { height:100%; }
+
+ :root {
+  --dark_blue: #5370f1;
+  --blue: #5C7AFF;
+  --light_blue: #4A8FE7;
+  --white: #f8f5f2;
+  --black: #191308;
+  --light_black: #322A26;
+  --light_red: #f33d3d;
+  --hover: #faf9f9;
+  --red: #d63030;
+  --padding_0: 0.25rem;
+  --padding_1: 0.5rem;
+  --padding_2: 1rem;
+  --padding_3: 1.5rem;
+  --padding_4: 2rem;
+  --padding_5: 2.5rem;
+  --padding_6: 3rem;
+}
+
+a{
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 600;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: var(--padding_1);
+  padding-left: var(--padding_2);
+}
+
+.title{
+  color: var(--black);
+}
+
+.nav-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: auto;
+  margin: var(--padding_1);
+  margin-right: 0;
+}
+
+p.control{
+  width: auto;
+  margin-right: var(--padding_2);
+}
+
+.button{
+  padding: var(--padding_1);
+  cursor: pointer;
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--black);
+}
+
+.button:hover{
+  background-color: var(--hover);
+}
+
+.is-inverted{
+  background-color: var(--light_black);
+  color: white;
+}
+
+.is-inverted:hover{
+  background-color: var(--black);
+}
+
+.fluid{
+  width: 100%;
+}
+
+.btn-sml{
+  padding: var(--padding_0);
+  cursor: pointer;
+  border: 2px solid black;
+  font-size: 600;
+  background-color: transparent;
+  color: var(--black);
+}
+
+.is-red{
+  background-color: var(--red);
+  color: white;
+}
+
+.is-red:hover{
+  background-color: var(--light_red);
+}
+
+.container{
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container{
+  display: grid;
+  max-width: 90%;
+  margin-left: 5%;
+  grid-auto-rows: none;
+  overflow: scroll;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 25rem));
+  grid-template-rows: repeat(3, minmax(10rem, 13rem));
+  justify-content: center;
+
+}
+
+.grid-item{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 50rem;
+  height: auto;
+  border: 2px solid black;
+  justify-content: space-between;
+  padding: var(--padding_2);
+}
+
+.show{
+  border: none;
+  width: auto;
+}
+
+.going{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+span.going > div:last-child {
+  margin-left: 1rem;
+}
+span.going > div > form{
+  width: auto;
+}
+
+.profile-link{
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.description{
+  padding-top: var(--padding_1);
+  font-size: 0.95rem;
+}
+
+strong>a{
+  font-weight: 900;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+.new-section{
+  margin-top: 7rem;
+  text-align: center;
+}
+
+p{
+  width: 100%;
+  height: auto;
+  word-wrap: break-word;
+}
+
+textarea{
+  resize: none;
+  border-color: var(--black);
+  padding: var(--padding_1);
+  margin-bottom: var(--padding_1);
+}
+
+input[type="checkbox"]{
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: .9rem;
+  height: .9rem;
+  border: 0.15em solid currentColor;
+  transform: translateY(-0.1rem);
+  display: inline-grid;
+  place-content: center;
+}
+
+input[type="checkbox"]:hover{
+  cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  transform-origin: bottom left;
+  background-color: CanvasText;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input:focus, textarea:focus{
+  outline: none;
+}
+
+input:not([type="checkbox"]){
+  border-color: var(--black);
+  padding: var(--padding_1);
+  width: 100%;
+}
+
+form{
+  width: 25rem;
+}
+
+.flash{
+  position: absolute;
+  top: 0;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  z-index: 5;
+  padding: var(--padding_0);
+  animation-name: disapear;
+  animation-duration: 3000ms;
+  animation-fill-mode: forwards;
+}
+
+.notice{
+  background-color: rgb(28, 173, 28);
+}
+
+.alert{
+  background-color: rgb(241, 145, 0);
+}
+
+.invisible-button{
+  border-color:transparent;
+  background-color: transparent;
+  color: var(--black);
+  font-weight: 900;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: var(--padding_1);
+}
+.invisible-button:hover{
+  cursor: pointer;
+}
+
+form > input, form > textarea, .field{
+  margin-bottom: var(--padding_1);
+}
+
+.bottom-1{
+  margin-bottom: var(--padding_1);
+}
+.bottom-2{
+  margin-bottom: var(--padding_2);
+}
+.bottom-3{
+  margin-bottom: var(--padding_3);
+}
+.bottom-4{
+  margin-bottom: var(--padding_4);
+}
+.bottom-5{
+  margin-bottom: var(--padding_5);
+}
+.top-1{
+  margin-top: var(--padding_1);
+}
+.top-2{
+  margin-top: var(--padding_2);
+}
+.top-3{
+  margin-top: var(--padding_3);
+}
+.top-4{
+  margin-top: var(--padding_4);
+}
+.top-5{
+  margin-top: var(--padding_5);
+}
+
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+.dropdown-menu{
+  display: none;
+  position: absolute;
+  padding: var(--padding_0);
+  background: white;
+  word-break: none;
+  white-space: nowrap;
+  width: auto;
+  max-width: 6rem;
+  overflow-x: hidden;
+}
+
+.dropdown:hover .dropdown-menu{
+  display: block;
+  box-shadow: 0px 0px 2px gray;
+  font-size: 0.9rem;
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+@keyframes disapear{
+  0%{
+    transform: translateY(0);
+  }
+  75%{
+    transform: translateY(0);
+  }
+  100%{
+    display: none;
+    transform: translateY(-2rem);
+  }
+}

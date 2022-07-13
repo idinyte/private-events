@@ -1,11 +1,38 @@
-<strong><%=@event.title%></strong><br/>
-<span><%= link_to "@#{@event.event_creator.username}", user_path(@event.event_creator.id)%></span><br/>
-<% if @event.attendees.ids.include?(current_user.id)%>
-<span><%= button_to 'Cancel', going_to_event_path, :method => :delete %></span><br/>
-<% else%>
-<span><%= button_to 'Attend', attend_path %></span><br/>
-<%end%>
-<%=  @event.attendees %>
-<p><%= @event.description %></p>
-<time datetime="<%= @event.date %>"><%= @event.date.strftime('%b %d %Y') %></time>
-
+<div class="container">
+  <article class="grid-item show">
+    <div>
+      <strong><%=@events.title%></strong><br/>
+      <span><%= link_to "@#{@events.event_creator.username}", user_path(@events.event_creator.id), class: "profile-link"%></span><br/>
+      <span class="going top-1">
+        <div>
+          <% if current_user.id == @events.user_id %>
+            <%= button_to 'Delete Event', event_path, class: "btn-sml is-red", form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %>
+          <%else%>
+            <% if @events.attendees.ids.include?(current_user.id)%>
+              <%= button_to 'Cancel', going_to_event_path, :method => :delete, class: "btn-sml"%>
+            <% else%>
+              <%= button_to 'Attend', attend_path, class: "btn-sml" %>
+            <%end%>
+          <%end%>
+        </div>
+        <div class="dropdown">
+          <div><%= @events.attendees.count %> going</div>
+          <div class="dropdown-menu">
+            <ul >
+              <% @going.each_with_index do |attendee, index| %>
+                <% if index == 3%>
+                  <li> and <%=@events.attendees.count - 3%> more</li>
+                  <%break%>
+                <%else%>
+                  <li> <%=attendee.username%></li>
+                <%end%>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+      </span><br/>
+      <p><%= @events.description %></p>
+    </div>
+    <time class="top-3" datetime="<%= @events.date %>"><%= @events.date.strftime('%b %d %Y,   %H:%M') %></time>
+  </article>
+</div>

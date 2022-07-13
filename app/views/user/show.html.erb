@@ -1,10 +1,19 @@
-<% if @user_events.any? %>
-  <h2><%= @username %> events</h2>
-  <% @user_events.each do |event| %>
+<section class="new-section">
+  <h2><%= @username %>'s Profile</h2>
+  <h2>Hosting <%= @user_hosting.count %> </h2>
+  <% @user_hosting.each do |event| %>
     <article class="container">
       <strong><%= link_to event.title, event_path(event.id)%></strong><br/>
       <p><%= event.description %></p>
       <time datetime="<%= event.date %>"><%= event.date.strftime('%b %d %Y') %></time>
     </article>
   <%end%>
-<%end%>
+  <h2>Attending <%= @user_going_to.count %> </h2>
+  <% @user_going_to.each do |event| %>
+    <article class="container">
+      <strong><%= link_to event.title, event_path(event.id)%></strong><br/>
+      <p><%= event.description %></p>
+      <time datetime="<%= event.date %>"><%= event.date.strftime('%b %d %Y') %></time>
+    </article>
+  <%end%>
+</section>

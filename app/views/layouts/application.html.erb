@@ -17,22 +17,22 @@
         <% end %>
       </div>
       <div class="nav-buttons">
-        <% if user_signed_in? %>
-        <p>
-            <%= link_to "New event", new_event_path%>
+          <% if user_signed_in? %>
+          <p class="control">
+            <%= link_to "New event", new_event_path, class: "button"%>
           </p>
           <p class="control">
-            <%= link_to current_user.username, user_index_path, class: "button is-inverted" %>
+            <%= link_to current_user.username, user_path(current_user.id), class: "button" %>
           </p>
-          <p>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: "delete" }, class:"button is-info" %>
+          <p class="control">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: "delete" }, class:"button is-red" %>
           </p>
         <% else %>
           <p class="control">
-            <%= link_to 'Log In', new_user_session_path, class: "button is-inverted" %>
+            <%= link_to 'Log In', new_user_session_path, class: "button" %>
           </p>
           <p class="control">
-            <%= link_to 'Sign Up', new_user_registration_path, class: "button is-info" %>
+            <%= link_to 'Sign Up', new_user_registration_path, class: "button" %>
           </p>
         <% end %>
       </div>

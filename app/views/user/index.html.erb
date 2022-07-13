@@ -1,9 +1,15 @@
-<h2>My events</h2>
-
-<% @my_events.each do |event| %>
-  <article class="container">
-    <strong><%= link_to event.title, event_path(event.id)%></strong><br/>
-    <p><%= event.description %></p>
-    <time datetime="<%= event.date %>"><%= event.date.strftime('%b %d %Y') %></time>
-  </article>
-<%end%>
+<section class="new-section">
+  <h2>My Profile</h2>
+  <h2>Hosting <%= @my_events.count %> </h2>
+  <h2>Attending <%= GoingToEvent.where(user_id: current_user.id).count %> </h2>
+  
+  <h2>My events</h2>
+  
+  <% @my_events.each do |event| %>
+    <article class="container">
+      <strong><%= link_to event.title, event_path(event.id)%></strong><br/>
+      <p><%= event.description %></p>
+      <time datetime="<%= event.date %>"><%= event.date.strftime('%b %d %Y') %></time>
+    </article>
+  <%end%>
+</section>
