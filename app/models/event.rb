@@ -4,6 +4,6 @@ class Event < ApplicationRecord
   has_many :attendees, through: :going_to_event, source: :user
 
   validates :description, presence: true, length: 20..2000
-  validates :title, presence: true, length: {maximum: 30}
+  validates :title, presence: true, length: {maximum: 50}
   validates :date, presence: true, comparison: { greater_than: Time.now, message: "must be in the future" }
 end
