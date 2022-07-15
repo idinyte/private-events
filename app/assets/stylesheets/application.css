@@ -142,7 +142,7 @@ p.control{
   grid-auto-rows: none;
   overflow: scroll;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 25rem));
+  grid-template-columns: repeat(auto-fit, 25rem);
   grid-auto-rows: minmax(10rem, 13rem);
   justify-content: center;
 
@@ -372,6 +372,15 @@ form > input, form > textarea, .field{
   opacity: 0;
 }
 
+.auto{
+  height: auto;
+}
+
+.wide{
+  display: block;
+  text-align: center;
+  width: 25rem;
+}
 
 ul {
   list-style-type: none;

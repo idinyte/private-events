@@ -12,11 +12,13 @@
       <time datetime="<%= event.date %>"><%= event.date.strftime('%b %d %Y') %></time>
     </article>
   <%end%>
-  <div class="grid-item hide", id="current_anchor"></div>
-  <% if Event.all.where('date >= ?', DateTime.now).count > @limit.to_i %>
-    <div><%= link_to "More", events_path(:limit => @limit.to_i + 6, :limit_past => @limit_past.to_i, anchor: "current_anchor"), class: "btn-sml grid-item container"%></div>
-  <% end %>
 </section>
+<div id="current_anchor"></div><br>
+<div class="container auto">
+  <% if Event.all.where('date >= ?', DateTime.now).count > @limit.to_i %>
+      <div><%= link_to "More", events_path(:limit => @limit.to_i + 6, :limit_past => @limit_past.to_i, anchor: "current_anchor"), class: "btn-sml wide"%></div>
+    <% end %>
+</div>
 
 <div class="new-section">
   <h2>Past events</h2>
@@ -33,8 +35,10 @@
       <time datetime="<%= event.date %>"><%= event.date.strftime('%b %d %Y') %></time>
     </article>
   <%end%>
-  <div class="grid-item hide", id="past_anchor"></div>
-  <% if Event.all.where('date < ?', DateTime.now).count > @limit_past.to_i %>
-    <div><%= link_to "More", events_path(:limit => @limit.to_i, :limit_past => @limit_past.to_i + 6, anchor: "past_anchor" ), class: "btn-sml grid-item container"%></div>
-  <% end %>
 </section>
+<div id="past_anchor"></div><br>
+<div class="container auto">
+  <% if Event.all.where('date < ?', DateTime.now).count > @limit_past.to_i %>
+      <div><%= link_to "More", events_path(:limit => @limit.to_i, :limit_past => @limit_past.to_i + 6, anchor: "past_anchor" ), class: "btn-sml wide"%></div>
+    <% end %>
+</div>
