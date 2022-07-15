@@ -2,7 +2,10 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: %i[show create]
 
   def index
-    @events = Event.all.order(date: :asc).where('date > ?', DateTime.now).limit(9)
+    @limit = params[:limit]
+    @events = Event.all.order(date: :asc).where('date >= ?', DateTime.now).limit(@limit)
+    @limit_past = params[:limit_past]
+    @past_events = Event.all.order(date: :asc).where('date < ?', DateTime.now).limit(@limit_past)
   end
 
   def new
