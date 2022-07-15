@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     @limit = params[:limit]
     @events = Event.all.order(date: :asc).where('date >= ?', DateTime.now).limit(@limit)
     @limit_past = params[:limit_past]
-    @past_events = Event.all.order(date: :asc).where('date < ?', DateTime.now).limit(@limit_past)
+    @past_events = Event.all.order(date: :desc).where('date < ?', DateTime.now).limit(@limit_past)
   end
 
   def new
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @events.save
-        format.html { redirect_to root_path, location: @event }
+        format.html { redirect_to events_path(:limit => 6, :limit_past => 6), location: @event }
       else
         flash.now[:alert] = @events.errors.full_messages.first
         format.html { render :new, status: :unprocessable_entity }
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
     GoingToEvent.all.where(event_id: params[:id]).destroy_all
     Event.find(params[:id]).destroy
     respond_to do |format|
-      format.html { redirect_to root_url, notice: "Event removed." }
+      format.html { redirect_to events_path(:limit => 6, :limit_past => 6), notice: "Event removed." }
       format.json { head :no_content }
     end
   end
