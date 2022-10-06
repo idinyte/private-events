@@ -39,6 +39,6 @@
 <div id="past_anchor"></div><br>
 <div class="container auto">
   <% if Event.all.where('date < ?', DateTime.now).count > @limit_past.to_i %>
-      <div><%= link_to "More", events_path(:limit => @limit.to_i, :limit_past => @limit_past.to_i + 6, anchor: "past_anchor" ), class: "btn-sml wide"%></div>
+      <div><%= link_to "More", events_path(:limit => @limit.to_i, :limit_past => @limit_past.to_i + 6, anchor: "past_anchor" ), class: "btn-sml wide bottom-4"%></div>
     <% end %>
 </div>

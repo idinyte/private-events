@@ -140,7 +140,6 @@ p.control{
   max-width: 90%;
   margin-left: 5%;
   grid-auto-rows: none;
-  overflow: scroll;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, 25rem);
   grid-auto-rows: minmax(10rem, 13rem);
